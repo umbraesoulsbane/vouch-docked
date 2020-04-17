@@ -9,4 +9,9 @@ https://hub.docker.com/r/voucher/vouch-proxy
 ## Auth Provider
 [Okta](https://www.okta.com/)
 
+### Supporting References
+- https://developer.okta.com/blog/2018/08/28/nginx-auth-request
+- https://medium.com/@vbehar/how-to-protect-a-kubernetes-ingress-behind-okta-with-nginx-91e279e06009
+
+
 **Note:** This application has not been hardened or vulnerability tested and is not intended for production use.
