@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+
+  vouch:
+    container_name: vouch_docked
+    build:
+        context: .
+        dockerfile: ./srv/Dockerfile
+    volumes:
+        - ./assets/certs:/usr/certs
+    ports: 
+        - "9090:9090"
+    command: bash -c "tail -f /dev/null"
