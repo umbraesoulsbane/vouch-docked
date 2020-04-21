@@ -1,4 +1,4 @@
-FROM voucher/vouch-proxy:latest
+FROM voucher/vouch-proxy:alpine
 
 COPY ./srv/config/vouch-config.yml /config/config.yml
 

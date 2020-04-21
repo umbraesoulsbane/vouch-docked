@@ -2,13 +2,27 @@ version: '3.7'
 
 services:
 
-  vouch:
-    container_name: vouch_docked
-    build:
-        context: .
-        dockerfile: ./srv/Dockerfile
-    volumes:
-        - ./assets/certs:/usr/certs
-    ports: 
-        - "9090:9090"
-    command: bash -c "tail -f /dev/null"
+    vouch:
+        container_name: vouch_docked
+        build:
+            context: .
+            dockerfile: ./srv/vouch/Dockerfile
+        volumes:
+            - ./assets/vouch/certs:/usr/certs
+        ports: 
+            - "9090:9090"
+        command: bash -c "tail -f /dev/null"
+    
+    nginx:
+        container_name: nginx_docked
+        build:
+            context: .
+            dockerfile: ./srv/nginx/Dockerfile
+        volumes:
+            - ./assets/nginx/www:/usr/share/nginx/html/
+        ports:
+            - "80:80"
+        environment:
+            - NGINX_HOST=site.thedarkisle.nginx
+            - NGINX_PORT=80
+        #command: /bin/bash -c "envsubst < /etc/nginx/conf.d/mysite.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
